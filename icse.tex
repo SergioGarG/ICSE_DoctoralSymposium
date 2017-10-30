@@ -54,26 +54,7 @@
 \newcommand{\INPUT}{\textbf{Input} }
 \newcommand{\OUTPUT}{\textbf{Output} }
 
-\newcommand{\AP}{\Pi} %atomic propositions
-\newcommand{\service}{\pi}
-\newcommand{\behavior}{\ensuremath{\mathcal{B}}} %Buchi automaton
-\newcommand{\trace}{\ensuremath{\mathcal{T}}}
-\newcommand{\A}{\ensuremath{\mathcal{A}}} %automaton
-\newcommand{\B}{\ensuremath{\mathcal{B}}} %Buchi automaton
-\newcommand{\BA}{B\"uchi automaton }
-\renewcommand{\P}{\mathcal{P}} %product automaton
-\newcommand{\R}{\mathcal{R}} %rabin automaton
-\newcommand{\init}{\ensuremath{init}}
-\newcommand{\pref}{\mathit{pref}}
-\newcommand{\currs}{\mathfrak{s}}
-\newcommand{\currq}{\mathfrak{q}}
-\newcommand{\dur}{\Delta}
-\newcommand{\wait}{\mathit{wait}}
-\newcommand{\sync}{\mathit{sync}}
-\newcommand{\nosync}{\mathit{nosync}}
-\newcommand{\TS}{\ensuremath{\T=(S,} \ensuremath{\init}, \ensuremath{{A},} \ensuremath{\AP,} \ensuremath{T,} \ensuremath{\Sync,} \ensuremath{L)}}
-\newcommand{\PTS}{\ensuremath{\T=(S,} \ensuremath{\init},   \ensuremath{{A},} \ensuremath{\AP,}    \ensuremath{T,}   \ensuremath{T_p,}  \ensuremath{\Sync}, \ensuremath{\Sync_p}, \ensuremath{L} )}
-\newcommand{\PTSone}{\ensuremath{\T'=(S',} \ensuremath{\init',} \ensuremath{{A'},} \ensuremath{\AP',} \ensuremath{T',}  \ensuremath{T'_p,} \ensuremath{\Sync' )}}
+
 
 \newcommand{\ra}{$\rightarrow$}
 \newcommand{\ugh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
@@ -85,28 +66,6 @@
 
 \newcommand{\TSoneprime}{{\T_1=(S'_1, \init'_{1},{A}'_1,T'_1, \Sync')}}
 
-\newcommand{\TSone}{{\T_1=(S_1,\init_{1},{A}_1,T_1, \Sync_1)}}
-\newcommand{\TStwo}{{\T_1=(S_2, \init_{2},{A}_2,T_2, \Sync_2)}}
-\newcommand{\TSproduct}{{(S_1 \times S_2,\langle \init_{1}, s_{2,\init} \rangle,{A}_2 \cup {A}_2,T, \Sync)}}
-\newcommand{\TStwoprime}{{\T_1=(S'_2,\init'_{2},{A}'_2,T'_2)}}
-\newcommand{\robotpar}{\ensuremath{\T_\robotindex=} \ensuremath{(S_\robotindex,} \ensuremath{\init_{\robotindex},} \ensuremath{{A}_\robotindex,} \ensuremath{\AP_\robotindex ,} \ensuremath{T_\robotindex,} \ensuremath{\Sync_\robotindex)}}
-\newcommand{\robotp}[1]{\ensuremath{\T_{#1}=} \ensuremath{(S_{#1},} \ensuremath{\init_{#1},} \ensuremath{{A}_{#1},} \ensuremath{\AP_{#1} ,} \ensuremath{T_{#1},} \ensuremath{\Sync_{#1})}}
-\newcommand{\partialrobotp}[1]{\ensuremath{\T_{#1}}=(\ensuremath{S_{#1}}, \ensuremath{\init_{#1},} \ensuremath{{A}_{#1},} \ensuremath{\AP_{#1},} \ensuremath{T_{#1},} \ensuremath{T_{p,#1},} \ensuremath{\Sync_{#1},} 
-\ensuremath{\Sync_{p,#1}}, \ensuremath{{L}_{#1}})}
-
-
-\newcommand{\PTSpar}{\ensuremath{\T_\robotindex=(S_\robotindex,} \ensuremath{\init_{\robotindex},} \ensuremath{{A}_\robotindex,} \ensuremath{\AP_\robotindex ,} \ensuremath{T_\robotindex,} \ensuremath{T_{p,\robotindex},} \ensuremath{\Sync_\robotindex}, 
-\ensuremath{\Sync_{p,\robotindex}, \ensuremath{L}_\robotindex)}}
-
-\newcommand{\network}{\ensuremath{\N}}
-\newcommand{\robotapplication}{\ensuremath{\N}}
-\newcommand{\robotset}{\network = \{\ensuremath{\robot_1,} \ensuremath{\robot_2, \ldots}, \ensuremath{\robot_N\}}}
-\newcommand{\robotsetdef}{\{\ensuremath{\robot_1,} \ensuremath{\robot_2, \ldots}, \ensuremath{\robot_N\}}}
-\newcommand{\robotsetdefp}{\{\ensuremath{\robot'_1,} \ensuremath{\robot'_2, \ldots}, \ensuremath{\robot'_N\}}}
-\newcommand{\property}{\ensuremath{\phi}}
-\newcommand{\missions}{\ensuremath{\Phi}}
-\newcommand{\propertiesset}{\ensuremath{\Phi =} \{\ensuremath{\property_1,} \ensuremath{\property_2, \ldots}, \ensuremath{\property_N\}}}
-
 
 \newcommand{\TSi}{{\T_i=(S_i,\init_{i},{A_i} ,T_i)}}
 \newcommand{\N}{\mathcal{H}}
@@ -116,7 +75,6 @@
 \newcommand{\D}{{D}}
 \renewcommand{\O}{\mathcal{O}}
 
-\newcommand{\toolName}{MAPmAKER}
 \newcommand{\APs}{\mathbf{\Pi}}
 \newcommand{\Lang}{\mathcal{L}} %language
 \newcommand{\Set}{\mathsf{S}} %set
@@ -230,7 +188,7 @@
 \fi
 
 \begin{document}
-\title{MAPmAKER: A Tool for Performing Multi-Robot LTL Planning Under Uncertainty}
+\title{Towards system development processes for robotic applications }
 
 
 %\author{Sergio Garc\'{i}a}
@@ -245,17 +203,11 @@
 
 
 \begin{abstract}
-Robot applications are increasingly asking for decentralized techniques that allow for tractable automated planning. 
-Furthermore, those applications can be deployed in dynamic environments where its uncertainty must be handled.
-Typically, environments where human beings are involved can just provide a partial knowledge of its model, i.e. the current state of a door between two rooms in uncertain. 
+The number of robotic applications that are being developed is increasing exponentially both in industry and academia.
+However, those applications do not have common system development process, what leads to the necessity of starting projects from scratch for most of the robot developers.
 
-Our proposed tool, \toolName tackle the limitations that current planning techniques are used for teams of robots: 
-\begin{enumerate*}
-\item it decomposes the robotic team into subclasses, avoiding the not scalable centralized approach;
-\item it considers complex-high level missions given in temporal logic;
-\item it is able to work also with only partial knowledge of the environment, performing possible plans.
-\end{enumerate*}
-
+In this PhD project, we aim to produce a set of processes and architectural models and methods to be used by developers in order to improve reusability and modularity in robotic applications. 
+In order to validate our results we make use of a set of service robots that will be employed for different case studies.
 \end{abstract}
 
 %

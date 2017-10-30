@@ -1,26 +1,45 @@
-%Helping designers to engineer robotic systems is one of the timely application areas of software engineering. 
-%Designing %good 
-%robotic systems requires solving %several 
-%numerous problems~\cite{ljungblad2005designing}, such as the selection of the types of the robot to be employed (e.g., humanoid, robotic arm), the analysis of the required robot properties (e.g., emergence, emotional), the analysis of the place in which the robot operates (e.g., on the bus, in a birthday party), the activity the robot has to perform (e.g., move object, reach a location), and the users it has to serve (e.g., taxi driver, rock star). 
-%These aspects are then used by designers in the selection of appropriate planners.
+Service robots are invading human lives. They are increasingly used in environments such as houses, airports, hospitals, and offices for performing navigation, transportation, and manipulation tasks. 
+The World Robotic Survey~\cite{wrs:online} estimated 35 million indoor service robots to be sold by 2018, accumulating a sales value of \$12 billion since 2015. 
+The global sales of household and personal robots is expected to grow by 23.5\% per year~\cite{sheng:online}. 
+This increase is accompanied with huge progress in robot technology, especially in image processing, planning, control, and collaboration. Software engineering is key to sustaining this new technology.
 
-\toolName provides a planner where a robot application is defined using finite transition systems.
-A \emph{planner} is  a software component that receives as input a model of the robotic application and computes  a set of actions (a \emph{plan}) that, if performed, allows the achievement of a desired mission~\cite{latombe2012robot}.
-Each robot application contains the robots that conform the team and the mission that they have to achieve.
+A robot typically performs specialized tasks; however, some tasks are highly complex and require a team of robots, whose capabilities (e.g., perception, manipulation, and actuation) are coordinated and supervised. 
+Such teams also need to adapt to changes, such as of the environment, of the desired tasks, or of the robot (e.g., hardware failures). 
+These demands drive the complexity of robot control software relying on appropriate software architectures. 
+To tackle this complexity, we need to rethink design processes~\cite{Lee2008} by properly managing system integration and raising the abstraction levels, addressing qualities like evolvability~\cite{Perez2008}, configurability~\cite{Gamez2013563}, scalability, power consumption, and dependability.
 
-A \emph{global mission} represents the high-level mission that must be accomplished by the whole team \cite{kloetzer2011multi,loizou2005automated,quottrup2004multi} and that is decomposed into a set of \emph{local missions}\cite{schillinger2016decomposition,guo2015multi,guo2015multi,tumova2016multi}.
-Every robot is commanded to achieve a local mission, specified as a LTL property.
-As seen in \cite{tumova2016multi}, this collaborative fashion of accomplishing the global mission is performed in a \emph{decentralized} way.
-Each robot that is part of a subset of the team computes the solution for its own sub-mission, avoiding the expensive fully centralized planning and making it more robust to local problems.
+Figure~\ref{fig:overview} depicts an overview of the work being developed for this project.
+There is an evident difference between two different approaches in robotic practices, that is when the robotic application puts to work an unique robot or a team of them. 
+This division also splits the research schedule of this project in terms of time, as explained in the following.
+The ``Single robot" subdivision of the overview represents the work already achieved and work in progress to be achieved in the near future.
+This subdivision contains the block of the \emph{Software Architecture}, which is at the same time contained in the \emph{Software Platform} block.
+The last mentioned block represents an additional layer for integrating the tools developed by researchers.
+Our platform must also be able to be customized by means of \emph{configuration facilities}, which provide the required tools for configuring the basic platform both at design and run-time.
 
-Nowadays, most of the planners consider the model of the environment as known and not dynamic~\cite{7139412}. 
-However, this is not a real condition of real world scenarios, where only \emph{partial knowledge} can be ensured.
-For this reason, our tool is able to compute a plan even when only partial information of the environment is available, as seen in \cite{roy2006planning,du2012robot,diaz2001exploring}.
-However, the novelty of our work consists in fuse all this features, exploiting a \emph{decentralized} methodology.
-This kind of approaches are not yet studied in detail, due to there are only a few planners managing this issues \cite{guo2015multi}.
+On the other hand, the future work that will be tackled once the single robot contents are already addresses is group in the subdivision of ``Multi robot".
+The main expected outcome of this subdivision is to achieve the orchestration of a deployed team of potentially heterogeneous robots.
+In order to do so, issues as \emph{Emergent properties} ~\cite{DeAngelis2015,DeAngelis2016} and selecting the most suitable \emph{Collaborative strategy} \sergio{needed citation} must be addressed.
+
+\begin{figure}[!t]
+\begin{center}
+\includegraphics[width=1\linewidth]{Figures/research.pdf}
+\caption{Overview of this PhD project.}
+\label{fig:overview}
+\end{center}
+\end{figure}
+
+\textbf{Research Questions.} 
+In this project we divide robot applications between single-robot and multi-robot approaches.
+For this reason, we state the following research questions:
+\begin{itemize}
+\item[RQ1] Which are the software engineering practices for single and multi-robotic systems? 
+\item[RQ2] Which are the applicable strategies to manage an heterogeneous robotic application?
+\end{itemize}
+
+\textbf{Contributions.} 
+
 
 \textbf{Organization.} 
-Section~\ref{sec:limitations} introduces robotic applications by highlighting the status of current planners.
-Section~\ref{sec:approach} describes the \toolName\ approach.
-Section~\ref{sec:tool} presents the \toolName\ tool.
-Section~\ref{sec:conclusion} concludes with final remarks.
+In Section~\ref{sec:related}, we introduce different works with a similar scope and position our research.
+Section~\ref{sec:approach} describes the research approach of the current work.
+Then, the next sections present the current state of our work in Section~\ref{sec:current}, future work and planned directions in Section~\ref{sec:future} and it concludes with Section~\ref{sec:conclusion} with final remarks.
