@@ -1,0 +1,331 @@
+\documentclass[sigconf,review, anonymous]{acmart}
+\acmConference[ICSE 2018]{40th International Conference on Software Engineering}{May 27--June 3, 2018}{Gothenburg, Sweden}
+\acmYear{2018}
+
+\usepackage{booktabs} % For formal tables
+\usepackage{centernot}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{balance}
+
+\newtheorem{remark}{Remark}
+\newtheorem{problem}{Problem}
+\newtheorem*{running*}{Running example}
+\usepackage[inline]{enumitem}
+\settopmatter{printfolios=true}
+
+
+\usepackage[xcolor=orange]{changes}
+\definechangesauthor[name={Claudio Menghi},color=orange]{CM}
+\definechangesauthor[name={Sergio Garcia},color=red]{SG}
+%\definechangesauthor[name={Patrizio},color=blue]{PP}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+%\newcommand{\sergio}[1]{\todo[color=blue]{\textsf{SG} #1}}
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true} % toggle to show or hide comments
+\ifthenelse{\boolean{showcomments}}
+{\newcommand{\nb}[2]{
+  \fcolorbox{black}{yellow}{\bfseries\sffamily\scriptsize#1}
+  {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+ }
+ \newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+}
+{\newcommand{\nb}[2]{}
+ \newcommand{\version}{}
+}
+\newcommand\patrizio[1]{\nb{Patrizio}{#1}}
+\newcommand\claudio[1]{\nb{Claudio}{#1}}
+\newcommand\sergio[1]{\nb{Sergio}{#1}}
+\newcommand\jana[1]{\nb{Jana}{#1}}
+
+\newcommand{\Sync}{\ensuremath{Meet}}
+\newcommand{\cla}[1]{\textcolor{red}{{#1}}}
+%%%shortcuts
+\newcommand{\robotindex}{n}
+\newcommand{\robotindexp}{m}
+\newcommand{\setrobot}{\ensuremath{\mathcal{R}}}
+\newcommand{\T}{\ensuremath{r}} %transition system
+
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\robot}{\ensuremath{\T}}
+
+\newcommand{\INPUT}{\textbf{Input} }
+\newcommand{\OUTPUT}{\textbf{Output} }
+
+\newcommand{\AP}{\Pi} %atomic propositions
+\newcommand{\service}{\pi}
+\newcommand{\behavior}{\ensuremath{\mathcal{B}}} %Buchi automaton
+\newcommand{\trace}{\ensuremath{\mathcal{T}}}
+\newcommand{\A}{\ensuremath{\mathcal{A}}} %automaton
+\newcommand{\B}{\ensuremath{\mathcal{B}}} %Buchi automaton
+\newcommand{\BA}{B\"uchi automaton }
+\renewcommand{\P}{\mathcal{P}} %product automaton
+\newcommand{\R}{\mathcal{R}} %rabin automaton
+\newcommand{\init}{\ensuremath{init}}
+\newcommand{\pref}{\mathit{pref}}
+\newcommand{\currs}{\mathfrak{s}}
+\newcommand{\currq}{\mathfrak{q}}
+\newcommand{\dur}{\Delta}
+\newcommand{\wait}{\mathit{wait}}
+\newcommand{\sync}{\mathit{sync}}
+\newcommand{\nosync}{\mathit{nosync}}
+\newcommand{\TS}{\ensuremath{\T=(S,} \ensuremath{\init}, \ensuremath{{A},} \ensuremath{\AP,} \ensuremath{T,} \ensuremath{\Sync,} \ensuremath{L)}}
+\newcommand{\PTS}{\ensuremath{\T=(S,} \ensuremath{\init},   \ensuremath{{A},} \ensuremath{\AP,}    \ensuremath{T,}   \ensuremath{T_p,}  \ensuremath{\Sync}, \ensuremath{\Sync_p}, \ensuremath{L} )}
+\newcommand{\PTSone}{\ensuremath{\T'=(S',} \ensuremath{\init',} \ensuremath{{A'},} \ensuremath{\AP',} \ensuremath{T',}  \ensuremath{T'_p,} \ensuremath{\Sync' )}}
+
+\newcommand{\ra}{$\rightarrow$}
+\newcommand{\ugh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
+\newcommand{\ins}[1]{\textcolor{blue}{\uline{#1}}} % please insert
+\newcommand{\del}[1]{\textcolor{red}{\sout{#1}}} % please delete
+\newcommand{\chg}[2]{\textcolor{red}{\sout{#1}}{\ra}\textcolor{blue}{\uline{#2}}}
+
+\newcommand{\TSprime}{{\T'=(S',\init',{A}',T', \Sync')}}
+
+\newcommand{\TSoneprime}{{\T_1=(S'_1, \init'_{1},{A}'_1,T'_1, \Sync')}}
+
+\newcommand{\TSone}{{\T_1=(S_1,\init_{1},{A}_1,T_1, \Sync_1)}}
+\newcommand{\TStwo}{{\T_1=(S_2, \init_{2},{A}_2,T_2, \Sync_2)}}
+\newcommand{\TSproduct}{{(S_1 \times S_2,\langle \init_{1}, s_{2,\init} \rangle,{A}_2 \cup {A}_2,T, \Sync)}}
+\newcommand{\TStwoprime}{{\T_1=(S'_2,\init'_{2},{A}'_2,T'_2)}}
+\newcommand{\robotpar}{\ensuremath{\T_\robotindex=} \ensuremath{(S_\robotindex,} \ensuremath{\init_{\robotindex},} \ensuremath{{A}_\robotindex,} \ensuremath{\AP_\robotindex ,} \ensuremath{T_\robotindex,} \ensuremath{\Sync_\robotindex)}}
+\newcommand{\robotp}[1]{\ensuremath{\T_{#1}=} \ensuremath{(S_{#1},} \ensuremath{\init_{#1},} \ensuremath{{A}_{#1},} \ensuremath{\AP_{#1} ,} \ensuremath{T_{#1},} \ensuremath{\Sync_{#1})}}
+\newcommand{\partialrobotp}[1]{\ensuremath{\T_{#1}}=(\ensuremath{S_{#1}}, \ensuremath{\init_{#1},} \ensuremath{{A}_{#1},} \ensuremath{\AP_{#1},} \ensuremath{T_{#1},} \ensuremath{T_{p,#1},} \ensuremath{\Sync_{#1},} 
+\ensuremath{\Sync_{p,#1}}, \ensuremath{{L}_{#1}})}
+
+
+\newcommand{\PTSpar}{\ensuremath{\T_\robotindex=(S_\robotindex,} \ensuremath{\init_{\robotindex},} \ensuremath{{A}_\robotindex,} \ensuremath{\AP_\robotindex ,} \ensuremath{T_\robotindex,} \ensuremath{T_{p,\robotindex},} \ensuremath{\Sync_\robotindex}, 
+\ensuremath{\Sync_{p,\robotindex}, \ensuremath{L}_\robotindex)}}
+
+\newcommand{\network}{\ensuremath{\N}}
+\newcommand{\robotapplication}{\ensuremath{\N}}
+\newcommand{\robotset}{\network = \{\ensuremath{\robot_1,} \ensuremath{\robot_2, \ldots}, \ensuremath{\robot_N\}}}
+\newcommand{\robotsetdef}{\{\ensuremath{\robot_1,} \ensuremath{\robot_2, \ldots}, \ensuremath{\robot_N\}}}
+\newcommand{\robotsetdefp}{\{\ensuremath{\robot'_1,} \ensuremath{\robot'_2, \ldots}, \ensuremath{\robot'_N\}}}
+\newcommand{\property}{\ensuremath{\phi}}
+\newcommand{\missions}{\ensuremath{\Phi}}
+\newcommand{\propertiesset}{\ensuremath{\Phi =} \{\ensuremath{\property_1,} \ensuremath{\property_2, \ldots}, \ensuremath{\property_N\}}}
+
+
+\newcommand{\TSi}{{\T_i=(S_i,\init_{i},{A_i} ,T_i)}}
+\newcommand{\N}{\mathcal{H}}
+\newcommand{\M}{{M}}
+\newcommand{\model}{\mathcal{M}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\D}{{D}}
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\toolName}{MAPmAKER}
+\newcommand{\APs}{\mathbf{\Pi}}
+\newcommand{\Lang}{\mathcal{L}} %language
+\newcommand{\Set}{\mathsf{S}} %set
+\newcommand{\Spec}{\mathbf{\Phi}}
+\newcommand{\Epsilon}{\mathcal{E}}
+\renewcommand{\i}{\iota}
+\newcommand{\Nat}{\mathbb{N}} %natural numbers
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Next}{\mathsf{X}}
+\newcommand{\Until}{\mathsf{U}}
+\newcommand{\Always}{\mathsf{G}}
+\newcommand{\Event}{\mathsf{F}}
+\newcommand{\false}{\mathit{false}}
+\newcommand{\true}{\mathit{true}}
+\newcommand{\trueval}{\ensuremath{\top}}
+\newcommand{\falseval}{\ensuremath{\bot}}
+\newcommand{\maybe}{\ensuremath{?}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\prop}{\pi}
+\newcommand{\ie}{{i.e., }}
+\newcommand{\eg}{{e.g., }}
+\newcommand{\progressive}{\varpi}
+\newcommand{\move}{\mathit{move}}
+\newcommand{\h}{h}
+\renewcommand{\H}{H}
+\newcommand{\parti}{\mathit{P}}
+\newcommand{\Alpha}{\mathbf{\Sigma}}
+\renewcommand{\mod}{\mathrm{\, mod \, }}
+\newcommand{\suc}{\mathit{succ}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\parspace}{\vskip 0.05in}
+
+
+\makeatletter
+\newcommand*{\da@rightarrow}{\mathchar"0\hexnumber@\symAMSa 4B }
+\newcommand*{\da@leftarrow}{\mathchar"0\hexnumber@\symAMSa 4C }
+\newcommand*{\xdashrightarrow}[2][]{%
+  \mathrel{%
+    \mathpalette{\da@xarrow{#1}{#2}{}\da@rightarrow{\,}{}}{}%
+  }%
+}
+\newcommand{\xdashleftarrow}[2][]{%
+  \mathrel{%
+    \mathpalette{\da@xarrow{#1}{#2}\da@leftarrow{}{}{\,}}{}%
+  }%
+}
+\newcommand*{\da@xarrow}[7]{%
+  % #1: below
+  % #2: above
+  % #3: arrow left
+  % #4: arrow right
+  % #5: space left 
+  % #6: space right
+  % #7: math style 
+  \sbox0{$\ifx#7\scriptstyle\scriptscriptstyle\else\scriptstyle\fi#5#1#6\m@th$}%
+  \sbox2{$\ifx#7\scriptstyle\scriptscriptstyle\else\scriptstyle\fi#5#2#6\m@th$}%
+  \sbox4{$#7\dabar@\m@th$}%
+  \dimen@=\wd0 %
+  \ifdim\wd2 >\dimen@
+    \dimen@=\wd2 %   
+  \fi
+  \count@=2 %
+  \def\da@bars{\dabar@\dabar@}%
+  \@whiledim\count@\wd4<\dimen@\do{%
+    \advance\count@\@ne
+    \expandafter\def\expandafter\da@bars\expandafter{%
+    }%
+  }%  
+  \mathrel{#3}%
+  \mathrel{%   
+    \mathop{\da@bars}\limits
+    \ifx\\#1\\%
+    \else
+      _{\copy0}%
+    \fi
+    \ifx\\#2\\%
+    \else
+      ^{\copy2}%
+    \fi
+  }%   
+  \mathrel{#4}%
+}
+
+\everymath{\vadjust{\nobreak\null}}
+
+\makeatletter
+\def\old@comma{,}
+\catcode`\,=13
+\def,{%
+  \ifmmode%
+    \old@comma\discretionary{}{}{}%
+  \else%
+    \old@comma%
+  \fi%
+}
+\makeatother
+
+\def\HiLi{\leavevmode\rlap{\hbox to \hsize{\color{yellow!50}\leaders\hrule height .8\baselineskip depth .5ex\hfill}}}
+
+\newif\ifextended
+\extendedfalse
+%\extendedtrue
+
+\ifextended
+\newcommand{\extended}[1]{\textcolor{red}{#1}} 
+\newcommand{\notextended}[1]{}
+\else
+\newcommand{\extended}[1]{}
+\newcommand{\notextended}[1]{#1}
+\fi
+
+\begin{document}
+\title{MAPmAKER: A Tool for Performing Multi-Robot LTL Planning Under Uncertainty}
+
+
+%\author{Sergio Garc\'{i}a}
+%\affiliation{%
+%  \institution{University of Gothenburg}
+%  \streetaddress{P.O. Box 1212}
+%  \city{Gothenburg} 
+%  \state{Sweden} 
+%  \postcode{405 30}
+%}
+
+
+
+\begin{abstract}
+Robot applications are increasingly asking for decentralized techniques that allow for tractable automated planning. 
+Furthermore, those applications can be deployed in dynamic environments where its uncertainty must be handled.
+Typically, environments where human beings are involved can just provide a partial knowledge of its model, i.e. the current state of a door between two rooms in uncertain. 
+
+Our proposed tool, \toolName tackle the limitations that current planning techniques are used for teams of robots: 
+\begin{enumerate*}
+\item it decomposes the robotic team into subclasses, avoiding the not scalable centralized approach;
+\item it considers complex-high level missions given in temporal logic;
+\item it is able to work also with only partial knowledge of the environment, performing possible plans.
+\end{enumerate*}
+
+\end{abstract}
+
+%
+% The code below should be generated by the tool at
+% http://dl.acm.org/ccs.cfm
+% Please copy and paste the code instead of the example below. 
+%
+%\begin{CCSXML}
+%<ccs2012>
+% <concept>
+%  <concept_id>10010520.10010553.10010562</concept_id>
+%  <concept_desc>Computer systems organization~Embedded systems</concept_desc>
+%  <concept_significance>500</concept_significance>
+% </concept>
+% <concept>
+%  <concept_id>10010520.10010575.10010755</concept_id>
+%  <concept_desc>Computer systems organization~Redundancy</concept_desc>
+%  <concept_significance>300</concept_significance>
+% </concept>
+% <concept>
+%  <concept_id>10010520.10010553.10010554</concept_id>
+%  <concept_desc>Computer systems organization~Robotics</concept_desc>
+%  <concept_significance>100</concept_significance>
+% </concept>
+% <concept>
+%  <concept_id>10003033.10003083.10003095</concept_id>
+%  <concept_desc>Networks~Network reliability</concept_desc>
+%  <concept_significance>100</concept_significance>
+% </concept>
+%</ccs2012>  
+%\end{CCSXML}
+%
+%\ccsdesc[500]{Computer systems organization~Embedded systems}
+%\ccsdesc[300]{Computer systems organization~Redundancy}
+%\ccsdesc{Computer systems organization~Robotics}
+%\ccsdesc[100]{Networks~Network reliability}
+
+
+%\keywords{ACM proceedings, \LaTeX, text tagging}
+
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+\input{Sections/introduction.tex}
+
+%\section{Related work}
+%\label{sec:related}
+%\input{Sections/related.tex}
+%
+%\section{Research approach}
+%\label{sec:approach}
+%\input{Sections/approach.tex}
+%
+%\section{Current status}
+%\label{sec:current}
+%\input{Sections/current.tex}
+%
+%\section{Future work and directions}
+%\label{sec:future}
+%\input{Sections/future.tex}
+%
+%\section{Conclusions}
+%\label{sec:conclusion}
+%\input{Sections/conclusions.tex}
+
+\balance
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sigproc} 
+
+\end{document}

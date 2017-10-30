@@ -1,0 +1,36 @@
+--Explain the tool in detail, maybe including a scope-- (add figure for the tool? maybe in the previous section?)
+
+Our tool was developed using the MATLAB~\cite{matlab} environment.
+The tool is composed by several MATLAB-based scripts that can be executed independently for performing certain functions.
+The usage of whole tool is launched using a function where the \emph{research question}, the \emph{example} or map of the environment and the \emph{experiment} to check are their arguments.
+his function enormously simplifies the performance of the tool, but there are other functionalities that can also be exploited explained in the previous section.
+
+In a normal case where the scenarios are already defined, the only components of the architecture depicted in~\ref{fig:overview} that are used are the \emph{Replication Package}, the \emph{Robot \& Environment models with uncertainty}, the \emph{Planner} itself and its inputs the \emph{Solutions container}.
+The first component represent a folder where the models of the robot and environment with a certain added uncertainty for the selected experiment are stored.
+They are loaded and set as MATLAB workspace variables in the second component.
+The planner needs as input the information from this variables and also from the scripts \emph{Algorithms}, \emph{Utils} and \emph{Configuration files}, that are automatically linked.
+Once the experiment is concluded, the data extracted (as explained in~\ref{sec:approach}) is stored in the solutions container component.
+
+\sergio{TODO: explain generation of models and fix diagram}
+
+\textbf{Performance}
+
+In \sergio{cite previous work} we have shown that our tool is able to perform a plan even in environments full of uncertainty.
+Thus, \toolName is able to compute a plan where other planners will not.
+However, the computation time and the number of actions to be performed by the robot that tries to follow a possible plan and detects a false evidence are normally greatly increased.
+This increasing is due to required re-computing that has to be performed when looking for a new possible plan.
+
+For checking its performance the tool was tested in different environments based on real-world scenarios.
+The model of the uncertainty of the environment was randomly created and matched with randomly models of the robots (service and synchronization locations and uncertainties).
+The performance of tool was evaluated in two Research Questions divided in three experiments (one for each kind of uncertainty defined for this project).
+The results are presented and discussed in \sergio{cite previous work}
+
+\textbf{Tool Validation}
+
+The \toolName is available at ~\url{https://goo.gl/GY7ZrG}.
+There, the following features can be found:
+\begin{enumerate}
+\item a complete replication package of the two RQs and experiments proposed at \sergio{cite other work},
+\item  a set of videos showing \toolName\ in action computing and solving the scenarios presented at the previous bullet,
+\item a brief user guide which defines the functionalities provided by our tool.
+\end{enumerate}

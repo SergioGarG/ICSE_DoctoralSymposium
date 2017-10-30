@@ -1,0 +1,38 @@
+\emph{Decentralized solutions.}
+%Kind of state of the art, relate de tool 
+
+\sergio{Not sure if we should add some planner tools as V-Rep http://www.coppeliarobotics.com/, ROS Moveit http://moveit.ros.org/, Gazebo http://gazebosim.org/ or look for papers presenting tools}
+
+Decentralized planning problem has been studied for known environments~\cite{schillinger2016decomposition,guo2015multi,tumova2016multi}.
+However, planners for partially known environments do not usually employ decentralized solutions~\cite{roy2006planning,du2012robot,diaz2001exploring}. 
+
+\emph{Dealing with partial knowledge in planning.}
+Planning in partially known environments is handled in different ways. 
+\begin{enumerate*}
+\item Several works (e.g.,~\cite{ding2011ltl,kurniawati2011motion,wolff2012robust,du2012robot,Roy2006,chen2012ltl,nikou2017probabilistic,7078886,7139350,narayanan2015task}) consider probabilities within the planning algorithm.
+Most of these works  treat partial information by modeling the robotic application using some form of \emph{Markov decision processes} (MDP).
+In some of these works~\cite{ding2011ltl,chen2012ltl} transitions of the robots are associated with probabilities which indicate the probability of reaching the destination of the transition given that an action is performed.
+In other works~\cite{wolff2012robust}, transition probabilities are not exactly known but are known to belong to a given uncertainty sets.
+Finally, several works~\cite{kurniawati2011motion,Roy2006} consider partially observable Markov decision processes.
+All these approaches generally generate plans that maximize the worst-case probability of satisfying a mission.
+Differently, our work does not consider probabilities.
+\item Several works (e.g,~\cite{lahijanian2016iterative,livingston2012backtracking,l2014safety,nie2016searching,7139412}) studied how to change the planned trajectories when unknown obstacles are detected or when obstacles move in a unpredictable way.
+In this case, the used underlying model is some sort of \emph{hybrid model}, i.e., models in which finite state machines are combined with differential equations. 
+In~\cite{lahijanian2016iterative}, to plan trajectories the authors use a high-level planner that exploits an abstraction of the hybrid system and the mission to compute high-level plans. 
+The low-level planner uses the dynamics of the hybrid system and the suggested high-level plans to explore the state space for feasible solutions.
+Every time an unknown obstacle is encountered, the high-level planner modifies the coarse high-level plan online by accounting for the geometry of the discovered obstacle. 
+Within this framework, \toolName\ can be considered as a high-level planner that is able to use an abstraction of the hybrid system that contains partial information, i.e., encode unknown obstacles.
+\item Some  approaches  analyzed how to update plans when new information about known model of a robotic application is detected (e.g.,~\cite{guo2015multi}). 
+Differently, in our approach portions of the model of the robotic application are partially known,  partial knowledge is reduced as true and false evidence about partial information is detected.
+Other works (e.g.,~\cite{7139310}), aim at detecting how to explore totally unknown environments.
+\item 
+Plan synthesis is a particular instance of controller synthesis. 
+Controller  synthesis (e.g.,~\cite{cassandras2009introduction,D'ippolito:2013:SNE:2430536.2430543}) aims at finding a component, usually indicated as controller or supervisor, that ensures property satisfaction for all the possible system executions.
+Differently, plan synthesis aims at finding a single execution, i.e., a plan that ensures property satisfaction.
+The controller synthesis  is usually (\cite{kress2009temporal,wongpiromsarn2009receding,chen2012ltl,livingston2012backtracking,guo2013revising}) performed by solving a two player game between robots and their environment.
+The goal is to find a strategy the robots can use that allows always winning the game.
+Differently, in our case the planning algorithm ensures that there is a way of completing the \emph{single} (possible) plan that satisfies the property of interest. 
+\item \toolName\ can be classified on the boundary between reactive synthesis~\cite{chen2012ltl,livingston2012backtracking,thomas2002automata} techniques and iterative planning~\cite{guo2013revising,maly2013iterative}. 
+As reactive synthesis techniques, \toolName\ constructs a control strategy that accounts for every possible variation in the environment, but the computed plan does not allow always winning the  \emph{two player game} between the robots and their environment.
+As  iterative planning, a new plan is computed on-the-fly when new information is available.
+\end{enumerate*}

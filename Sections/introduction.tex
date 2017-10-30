@@ -1,0 +1,26 @@
+%Helping designers to engineer robotic systems is one of the timely application areas of software engineering. 
+%Designing %good 
+%robotic systems requires solving %several 
+%numerous problems~\cite{ljungblad2005designing}, such as the selection of the types of the robot to be employed (e.g., humanoid, robotic arm), the analysis of the required robot properties (e.g., emergence, emotional), the analysis of the place in which the robot operates (e.g., on the bus, in a birthday party), the activity the robot has to perform (e.g., move object, reach a location), and the users it has to serve (e.g., taxi driver, rock star). 
+%These aspects are then used by designers in the selection of appropriate planners.
+
+\toolName provides a planner where a robot application is defined using finite transition systems.
+A \emph{planner} is  a software component that receives as input a model of the robotic application and computes  a set of actions (a \emph{plan}) that, if performed, allows the achievement of a desired mission~\cite{latombe2012robot}.
+Each robot application contains the robots that conform the team and the mission that they have to achieve.
+
+A \emph{global mission} represents the high-level mission that must be accomplished by the whole team \cite{kloetzer2011multi,loizou2005automated,quottrup2004multi} and that is decomposed into a set of \emph{local missions}\cite{schillinger2016decomposition,guo2015multi,guo2015multi,tumova2016multi}.
+Every robot is commanded to achieve a local mission, specified as a LTL property.
+As seen in \cite{tumova2016multi}, this collaborative fashion of accomplishing the global mission is performed in a \emph{decentralized} way.
+Each robot that is part of a subset of the team computes the solution for its own sub-mission, avoiding the expensive fully centralized planning and making it more robust to local problems.
+
+Nowadays, most of the planners consider the model of the environment as known and not dynamic~\cite{7139412}. 
+However, this is not a real condition of real world scenarios, where only \emph{partial knowledge} can be ensured.
+For this reason, our tool is able to compute a plan even when only partial information of the environment is available, as seen in \cite{roy2006planning,du2012robot,diaz2001exploring}.
+However, the novelty of our work consists in fuse all this features, exploiting a \emph{decentralized} methodology.
+This kind of approaches are not yet studied in detail, due to there are only a few planners managing this issues \cite{guo2015multi}.
+
+\textbf{Organization.} 
+Section~\ref{sec:limitations} introduces robotic applications by highlighting the status of current planners.
+Section~\ref{sec:approach} describes the \toolName\ approach.
+Section~\ref{sec:tool} presents the \toolName\ tool.
+Section~\ref{sec:conclusion} concludes with final remarks.
