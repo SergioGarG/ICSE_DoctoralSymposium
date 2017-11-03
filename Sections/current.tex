@@ -1,0 +1,15 @@
+Currently, our main focus lays on the RQ1, learning, defining and differencing between software engineering practices regarding single-robot and multi-robot systems.
+Our software architecture, Self-adaptive dEcentralised Robotic Architecture (SERA) is already defined.
+As its name indicates, it supports a real-time decentralized robot coordination to accomplish missions with teams of robots. 
+Furthermore, it is self-adaptive, responding to different changes by computing new strategies to achieve the desired goals.
+SERA was already tested during an Integration Meeting of the project, where it demonstrate that can support the performance of a robot achieving different complex missions ---i.e. collaborative transportation with an human being, autonomous driving in a dynamic environment.
+
+The aforementioned architecture follows the component-based style, so the main robotic functionalities are encapsulated in different modules or "components".
+All this components are developed abstracting the communication capabilities since we rely on the interfaces defined in the architecture.
+It not only significantly reduces the complexity of the code but also triggers the modularity of our system making possible exchanging the components that conform our architecture.
+
+Since the components of our architecture are exchangeable our next step is to define configuration facilities in order to allow the customization of the robotic application during design-time or its self-adaptation at run-time.
+\sergio{cita a rosplug lib?}
+
+Finally, the communication approach based on ROS+REST is already implemented, allowing the famous robotic middleware to share information between different robots in a decentralized way using services.
+

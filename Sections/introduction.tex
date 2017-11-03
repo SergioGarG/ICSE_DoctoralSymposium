@@ -8,6 +8,9 @@ Such teams also need to adapt to changes, such as of the environment, of the des
 These demands drive the complexity of robot control software relying on appropriate software architectures. 
 To tackle this complexity, we need to rethink design processes~\cite{Lee2008} by properly managing system integration and raising the abstraction levels, addressing qualities like evolvability~\cite{Perez2008}, configurability~\cite{Gamez2013563}, scalability, power consumption, and dependability.
 
+The PhD project presented in this paper is involved in the Co4Robots~\cite{co4robots} European project.
+Being part of this project allow us not only to formulate but also to validate our research questions in real-world scenarios.
+
 Figure~\ref{fig:overview} depicts an overview of the work being developed for this project.
 There is an evident difference between two different approaches in robotic practices, that is when the robotic application puts to work an unique robot or a team of them. 
 This division also splits the research schedule of this project in terms of time, as explained in the following.
@@ -37,7 +40,20 @@ For this reason, we state the following research questions:
 \end{itemize}
 
 \textbf{Contributions.} 
+Our contributions are listed in the following:
 
+\begin{enumerate}
+\item Definition of a software architecture able to support a robotic team
+\item Validation of the architecture in a real-world scenario
+\item Implementation of a software platform where all the algorithms and tools developed can be plugged in 
+\item Definition of configuration mechanisms to enable \emph{start-up configuration} and \emph{run-time configuration}
+\item Integration of an approach based on ROS+REST for the internal communication between robots
+\item Development of orchestration algorithms based on:
+\begin{enumerate}
+\item Response to emergent properties
+\item Selection of collaborative strategies
+\end{enumerate}
+\end{enumerate}
 
 \textbf{Organization.} 
 In Section~\ref{sec:related}, we introduce different works with a similar scope and position our research.
