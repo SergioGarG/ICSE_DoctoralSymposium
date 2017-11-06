@@ -1,4 +1,11 @@
 Currently, our main focus lays on the RQ1, learning, defining and differencing between software engineering practices regarding single-robot and multi-robot systems.
+In order to answer this question we divided the first part of our research into different tasks.
+First, we defined the software architecture that defines our system.
+Then, we will implement configuration facilities that enables the customization of the different components that compose the architecture.
+Finally, we will develop the software platform where the previous work is implemented.
+
+\subsection{Software architecture}
+
 Our software architecture, Self-adaptive dEcentralised Robotic Architecture (SERA) is already defined.
 As its name indicates, it supports a real-time decentralized robot coordination to accomplish missions with teams of robots. 
 Furthermore, it is self-adaptive, responding to different changes by computing new strategies to achieve the desired goals.
@@ -21,6 +28,8 @@ It not only significantly reduces the complexity of the code but also triggers t
 \end{center}
 \end{figure*}
 
+\subsection{Configuration facilities}
+
 Since the components of our architecture are exchangeable our next short-term goal is to define configuration facilities that can be applied to our system depicted in the architecture.
 It will allow to our applications to support two things:
 \begin{enumerate}
@@ -30,9 +39,13 @@ It will allow to our applications to support two things:
 
 In order to do so we will implement pluginlib~\footnote{http://wiki.ros.org/pluginlib}, a package that uses the ROS build infrastructure and provides tools for writing and dynamically loading plugins.
 
-Moreover, we are working not only in the performance of each robot but also in its behaviour. 
-Thus, it is mandatory the usage of an engine that could be flexibly applicable to numerous systems and scenarios.
-FlexBe~\cite{}
+\subsection{Software platform}
+
+We not only plan to control the performance of the system that is running in each robot but also its behaviour.
+Thus, the usage of high-level behavior engine, flexibly applicable to numerous systems and scenarios is mandatory.
+FlexBe~\cite{Schillinger2016} not only provides a way of defining the behaviour of the robot in different scenarios (as of the study cases) by means of a work flow, but also a graphical interface that simplifies enormously this task.
+FlexBe encapsulates functionalities of the robotic application, as our architecture does within components, and provides a way of orchestrate them so we keep the modularization of our system.
+As with ROS, an instantiation of FlexBe will be deployed in every robot.
 
 Finally, in order to communicate each robot with its teammates we implemented an approach based on ROS+REST.
 So, using a suitable component that works as an interface we are able to send messages in form of services between robots.
