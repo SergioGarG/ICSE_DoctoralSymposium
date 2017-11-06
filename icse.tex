@@ -9,19 +9,14 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{balance}
 
-\newtheorem{remark}{Remark}
-\newtheorem{problem}{Problem}
-\newtheorem*{running*}{Running example}
-\usepackage[inline]{enumitem}
-\settopmatter{printfolios=true}
-
-
 \usepackage[xcolor=orange]{changes}
 \definechangesauthor[name={Claudio Menghi},color=orange]{CM}
 \definechangesauthor[name={Sergio Garcia},color=red]{SG}
 %\definechangesauthor[name={Patrizio},color=blue]{PP}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 %\newcommand{\sergio}[1]{\todo[color=blue]{\textsf{SG} #1}}
+
+\usepackage[inline]{enumitem}
 
 \newboolean{showcomments}
 \setboolean{showcomments}{true} % toggle to show or hide comments
@@ -42,11 +37,6 @@
 
 \newcommand{\Sync}{\ensuremath{Meet}}
 \newcommand{\cla}[1]{\textcolor{red}{{#1}}}
-%%%shortcuts
-\newcommand{\robotindex}{n}
-\newcommand{\robotindexp}{m}
-\newcommand{\setrobot}{\ensuremath{\mathcal{R}}}
-\newcommand{\T}{\ensuremath{r}} %transition system
 
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
 \newcommand{\robot}{\ensuremath{\T}}
@@ -54,18 +44,11 @@
 \newcommand{\INPUT}{\textbf{Input} }
 \newcommand{\OUTPUT}{\textbf{Output} }
 
-
-
 \newcommand{\ra}{$\rightarrow$}
 \newcommand{\ugh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
 \newcommand{\ins}[1]{\textcolor{blue}{\uline{#1}}} % please insert
 \newcommand{\del}[1]{\textcolor{red}{\sout{#1}}} % please delete
 \newcommand{\chg}[2]{\textcolor{red}{\sout{#1}}{\ra}\textcolor{blue}{\uline{#2}}}
-
-\newcommand{\TSprime}{{\T'=(S',\init',{A}',T', \Sync')}}
-
-\newcommand{\TSoneprime}{{\T_1=(S'_1, \init'_{1},{A}'_1,T'_1, \Sync')}}
-
 
 \newcommand{\TSi}{{\T_i=(S_i,\init_{i},{A_i} ,T_i)}}
 \newcommand{\N}{\mathcal{H}}
@@ -205,8 +188,9 @@
 \begin{abstract}
 The number of robotic applications that are being developed is increasing exponentially both in industry and academia.
 However, those applications do not have common system development process, what leads to the necessity of starting projects from scratch for most of the robot developers.
+Thus, developing an application of robotics is always a time consuming task.
 
-In this PhD project, we aim to produce a set of processes and architectural models and methods to be used by developers in order to improve reusability and modularity in robotic applications. 
+In this PhD project, we aim to produce a set of processes and architectural models and methods to be used by developers in order to improve reusability and modularity in robotic applications and also reducing the time wasting tasks.
 In order to validate our results we make use of a set of service robots that will be employed for different case studies.
 \end{abstract}
 
@@ -259,17 +243,17 @@ In order to validate our results we make use of a set of service robots that wil
 %\label{sec:related}
 %\input{Sections/related.tex}
 %
-%\section{Research approach}
-%\label{sec:approach}
-%\input{Sections/approach.tex}
-%
+\section{Research approach}
+\label{sec:approach}
+\input{Sections/approach.tex}
+
 \section{Current status}
 \label{sec:current}
 \input{Sections/current.tex}
-%
-%\section{Future work and directions}
-%\label{sec:future}
-%\input{Sections/future.tex}
+
+\section{Future work and directions}
+\label{sec:future}
+\input{Sections/future.tex}
 %
 %\section{Conclusions}
 %\label{sec:conclusion}
