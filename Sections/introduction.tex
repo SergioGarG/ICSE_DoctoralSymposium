@@ -8,39 +8,30 @@ Such teams also need to adapt to changes, such as of the environment, of the des
 These demands drive the complexity of robot control software relying on appropriate software architectures. 
 To tackle this complexity, we need to rethink design processes~\cite{Lee2008} by properly managing system integration and raising the abstraction levels, addressing qualities like evolvability~\cite{Perez2008}, configurability~\cite{Gamez2013563}, scalability, power consumption, and dependability.
 
-The PhD project presented in this paper is involved in the Co4Robots~\cite{co4robots} European project.
+The PhD project presented in this paper is involved in the Co4Robots~\footnote{http://www.co4robots.eu/} European project.
 Being part of this project allow us not only to formulate but also to validate our research questions in real-world scenarios.
 According to~\cite{roadmap}: ``Usually there are no system development processes (highlighted by a lack of overall architectural models and methods). 
 This results in the need for craftsmanship in building robotic systems instead of following established engineering processes".
 In fact, most of the robotic applications developed nowadays have to be started from scratch without following well-engineered methods to help in the process.
 On the other hand, in this context the aim of the Co4Robots project is to establish systematic engineering process, based on Model-driven engineering (MDE), to facilitate the development of the software for animating robotic systems through the creation of reusable robot building blocks with well-defined interfaces and properties. 
 
-Figure~\ref{fig:overview} depicts an overview of the work being developed for this project.
-There is an evident difference between two different approaches in robotic practices, that is when the robotic application puts to work an unique robot or a team of them. 
-This division also splits the research schedule of this project in terms of time, as explained in the following.
-The ``Single robot" subdivision of the overview represents the work already achieved and work in progress to be achieved in the near future.
-This subdivision contains the block of the \emph{Software Architecture}, which is at the same time contained in the \emph{Software Platform} block.
-The last mentioned block represents an additional layer for integrating the tools developed by researchers.
-Our platform must also be able to be customized by means of \emph{configuration facilities}, which provide the required tools for configuring the basic platform both at design and run-time.
+For the process of development of the present project we plan to split the research in two parts.
+The first one is based on the research made for understand how to engineering robotic applications.
+During this period we try to the software engineering practices for both single and multi-robotic systems.
+Furthermore, throughout this division of the research we will study and develop the framework that will be allocated within every robot of our applications.
+First, we created the \emph{Software architecture} of the whole system and \emph{Configuration facilities}, which provide the required tools for configuring our architecture both at design and run-time.
+Moreover, the \emph{Software platform}, where the two other items will be integrated is being developed in parallel.
 
-On the other hand, the future work that will be tackled once the single robot contents are already addresses is group in the subdivision of ``Multi robot".
-The main expected outcome of this subdivision is to perform the choreography of a deployed team of potentially heterogeneous robots.
+On the other hand, the future work that will be tackled once the every robot framework is already addressed is group in the second division of the research, and aims to support the choreography of robotic applications.
+The main expected outcome of this subdivision is to perform the choreography of a deployed team of potentially heterogeneous robots in dynamic environments with the presence of human beings.
 In order to do so, issues as \emph{Emergent properties} ~\cite{DeAngelis2015,DeAngelis2016} and selecting the most suitable \emph{Collaborative strategy} \sergio{needed citation} must be addressed.
-
-\begin{figure}[!t]
-\begin{center}
-\includegraphics[width=1\linewidth]{Figures/researchv2.pdf}
-\caption{Overview of this PhD project.}
-\label{fig:overview}
-\end{center}
-\end{figure}
 
 \textbf{Research Questions.} 
 In this project we divide robot applications between single-robot and multi-robot approaches.
 For this reason, we state the following research questions:
 \begin{itemize}
-\item[RQ1] Which are the software engineering practices for single and multi-robotic systems? 
-\item[RQ2] Which are the applicable strategies to manage an heterogeneous robotic application?
+\item[RQ1] Which are the software engineering practices for engineering robotic applications? 
+\item[RQ2] Which are the applicable strategies to support the choreography of a heterogeneous robotic application?
 \end{itemize}
 
 \textbf{Contributions.} 
@@ -54,12 +45,13 @@ Our contributions are listed in the following:
 \item Integration of an approach based on ROS+REST for the internal communication between robots
 \item Development of the algorithms in charge of perform the choreography, based on:
 \begin{enumerate}
-\item Response to emergent properties
+\item Management of emergent properties
 \item Selection of collaborative strategies
 \end{enumerate}
 \end{enumerate}
 
 \textbf{Organization.} 
-In Section~\ref{sec:related}, we introduce different works with a similar scope and position our research.
 Section~\ref{sec:approach} describes the research approach of the current work.
-Then, the next sections present the current state of our work in Section~\ref{sec:single}, future work and planned directions in Section~\ref{sec:multi} and it concludes with Section~\ref{sec:conclusion} with final remarks.
+Then, the next sections present the current state of our work in Section~\ref{sec:single} and future work and planned directions in Section~\ref{sec:multi}.
+In Section~\ref{sec:related}, we introduce different works with a similar scope and position our research.
+It concludes with Section~\ref{sec:conclusion} with final remarks.
