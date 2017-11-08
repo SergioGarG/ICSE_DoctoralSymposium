@@ -30,8 +30,9 @@ In order to do so, issues as \emph{Emergent properties} ~\cite{DeAngelis2015,DeA
 In this project we divide robot applications between single-robot and multi-robot approaches.
 For this reason, we state the following research questions:
 \begin{itemize}
-\item[RQ1] Which are the software engineering practices for engineering robotic applications? 
-\item[RQ2] Which are the applicable strategies to support the choreography of a heterogeneous robotic application?
+\item[RQ1] Which are the software engineering practices for engineering robotic applications? Which are the limitations?
+\item[RQ2] How can Software Engineering improve the process of engineering robotic applications?
+\item[RQ3] Which are the applicable strategies to manage a heterogeneous robotic application with only partial knowledge of a dynamic environment?
 \end{itemize}
 
 \textbf{Contributions.} 
@@ -43,7 +44,7 @@ Our contributions are listed in the following:
 \item Implementation of a software platform where all the algorithms and tools developed can be plugged in 
 \item Definition of configuration mechanisms to enable \emph{start-up configuration} and \emph{run-time configuration}
 \item Integration of an approach based on ROS+REST for the internal communication between robots
-\item Development of the algorithms in charge of perform the choreography, based on:
+\item Development of the algorithms in charge of manage the robotic team, based on:
 \begin{enumerate}
 \item Management of emergent properties
 \item Selection of collaborative strategies
@@ -51,7 +52,9 @@ Our contributions are listed in the following:
 \end{enumerate}
 
 \textbf{Organization.} 
-Section~\ref{sec:approach} describes the research approach of the current work.
-Then, the next sections present the current state of our work in Section~\ref{sec:single} and future work and planned directions in Section~\ref{sec:multi}.
+Section~\ref{sec:approach} describes the research approach of the current work and we try to answer the first research question.
+In Section ~\ref{sec:single} we present the process that we follow for engineering robotic applications and answer RQ2.
+Then, in Section~\ref{sec:multi} we explain our plan for managing a robotic team while answering the RQ3.
 In Section~\ref{sec:related}, we introduce different works with a similar scope and position our research.
+Section~\ref{sec:validation} explains our validation rules.
 It concludes with Section~\ref{sec:conclusion} with final remarks.

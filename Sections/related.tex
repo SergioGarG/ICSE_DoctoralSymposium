@@ -11,9 +11,14 @@ Obviously, it decreases the modularity and reusability of the developed system a
 Furthermore, ROS has some limitations, some of them recognized by their developers~\footnote{http://design.ros2.org/articles/why\_ros2.html}.
 ROS2 is supposed to solve these previous problems and to substitute ROS1 in a near future, but since it was just released and there are not yet all the contents that were available for ROS1 we opted for keep using ROS1.
 
-Architectures
-	Decentralized
-	Multi-agent
-	Not SOA, microservices, cloud container
+Several software architectures for robotic systems already exist. 
+Kortenkamp et al [13] provide an extensive discussion about this topic. 
+The architectural styles followed by most of the authors for developing a software architecture in robotics are the component-based [14–16] and Service Oriented Architectures (SOA) [17–19]. 
+Specially, component-based software engineering has been broadly used, as explained in [20]. It allows a separation of concerns splitting the functionality of the whole software system into smaller, interchangeable, and configurable components. These features help to improve the modularity and the reusability of a software architecture, which is pivotal for a robotic system due to its nature.
+Microservices [21] is a variant of the SOA architectural style. The microservices architecture structures an application as a collection of loosely coupled services, which should be fine-grained and the protocols should be lightweight. It helps to improve modularity, but the multiple and complex relationships between all this services (which could not be homogeneous) increases the complexity of deploying a system with these technologies. On the other hand, the fact of devel- oping small and heterogeneous services allows the parallel development of software by enabling small autonomous teams to develop and deploy their respective services independently. Thus, they enable continuous delivery and deployment. The Cloud Container Technologies [22] are nowadays experiencing a boom because they are being employed as an extension of the microser- vices. Those technologies aid the orchestration of applications in distributed topologies, provide enhanced distributed computing capabilities and improves the performance of microservices due to the reduction of virtualization requirements. Nevertheless, since we declined the usage of mi- croservices in our system due to the unnecessary increase of complexity that it would lead to, we also declined the implementation of these technologies. However, the study of more complex tech- nologies has given to us some inspiration and ideas for improving a pure CBSE system, specially regarding two main advantages previously commented:
+
+A recent survey [5] shows that, even though several works support hierarchical and distributed architectures, most of these only support the same robot type. Moreover, some heterogeneous systems have the constraint of a required initial plan of the whole mission computed previously off-line [28]. In this light, SERA strives to be used in a hierarchical and distributed way,
+
+Our goal is to support complex missions in collaboration with human beings while performing self-adaptation in a decentralized fashion at run-time.
 
 Collaborative adaptation
