@@ -35,6 +35,8 @@ The platform is also a collection of the components that compose the architectur
 In our project the components of our architecture represent ROS~\cite{Quigley2009} nodes and packages, so the platform itself should be based on this middleware.
 All this components are developed abstracting the communication problems since we rely on the interfaces defined in the architecture.
 It not only significantly reduces the complexity of the code but also triggers the modularity of our system making possible exchanging the components based on the context.
+In order to achieve the abstraction of the interfaces we defined an abstract class for each component where all the communication code is stored.
+Then, every time a developer wants to create a new instantiation of a component they create a new class where all the logic is located and that inherits the properties of the abstract one.
 
 Because we not only plan to control the performance of the system that is running in each robot but also its behaviour we implemented FlexBe~\cite{Schillinger2016}.
 It is a high-level behavior engine, flexibly applicable to numerous systems and scenarios.
