@@ -17,6 +17,8 @@
 %\newcommand{\sergio}[1]{\todo[color=blue]{\textsf{SG} #1}}
 
 \usepackage[inline]{enumitem}
+\usepackage[multiple]{footmisc}
+
 
 \newboolean{showcomments}
 \setboolean{showcomments}{true} % toggle to show or hide comments
@@ -184,11 +186,12 @@
 
 \begin{abstract}
 The number of robotic applications that are being developed is increasing exponentially both in industry and academia.
-However, those applications do not have well-defined system development process.
-This fact leads to different time consuming tasks as the necessity of starting projects from scratch for most of the robot developers, the inability of reusing already developed packages, exchanging the already implemented ones, etc.
-On the other hand, robot applications are increasingly based on \emph{teams} of autonomous robots that work collaboratively to accomplish a mission more complex than one that could be achieved by a single robot.
+However, those applications are not developed through well-defined system development process.
+This fact leads to several time consuming tasks as the necessity of starting projects from scratch, the inability of reusing already developed packages and of exchanging the already implemented ones, etc.
+Besides, robot applications are increasingly based on \emph{teams} of autonomous robots that work collaboratively to accomplish a mission.
+The missions that can be achieved by a team of are more complex than the ones that can be achieved by a single robot, but the complexity of the application is also increased.
 
-In this PhD project, we aim to apply software engineering to robotic systems in order to produce processes, architectural models and methods to be used by developers in order to tackle common challenges as reusability, variability and modularity.
+In this PhD project, we aim to bring software engineering best practices to robotic systems in order to produce processes, architectural models and methods to be used by developers in order to tackle common challenges as reusability, variability and modularity.
 The goal is to cut down the waste of time when developing robotic applications.
 Furthermore, for our multi-robot applications we study how to manage and exploit emergent behaviours and how to perform a collaborative adaptation based on them.
 In order to validate our results we make use of different models of service robots in different case studies.
