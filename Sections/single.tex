@@ -5,24 +5,25 @@ we divided the development of the software to be deployed within each robot in d
 \textbf{Software architecture.}
 We developed the Co4Robots software architecture, Self-adaptive dEcentralised Robotic Architecture (SERA).
 In order to create and validate SERA we went through the following steps: %steps detailed in Section~\ref{sec:validation}.
-we held eight internal meetings, tested the work in three simulated scenarios, sent six emails with questions to each partner, held three consortium meetings, wrote one deliverable and held one integration meeting where SERA was tested.
+we held eight internal meetings, tested the work in three simulated scenarios, collected feedback from partners (trough six emails containing questions), held three consortium meetings, wrote one deliverable and held one integration meeting where SERA was tested.
 
 Our architecture supports a real-time decentralized robot coordination to accomplish missions with teams of robots. 
 %Furthermore, it is self-adaptive, responding to external and internal events by computing new strategies to achieve the desired goals.
 SERA is inspired by and extends concepts of existing proposals for robot software architectures from the literature. 
 Specifically, we inspected architectures identified by a mapping study of Ahmad et al.~\cite{Ahmad201616}, which investigated software architectures for robotics systems to identify and analyze the relevant literature. % based on 56 peer-reviewed papers.
 Our architecture is a three layers architecture that is strongly influenced by the well-known work of Kramer~\cite{kramer}.
-Furthermore, it is a component-based type of architecture, so functionalities of the system are encapsulated in modules called ``components".
+Furthermore, it is component-based, %a component-based type of architecture, 
+so functionalities of the system are encapsulated in modules called ``components''.
 
 %It is important to remark that the aim of our project is to build a system that can be easily used by not technical users, so we had to define a way for them to command the missions to the robotic team.
 %For this reason we added a central station that is just used during design-time in order to allocate a graphical interface to be used by a final user.
 
 We defined SERA by first conceiving an architecture for a single robot. 
 Then, we extended and refined it in order to iteratively extend and refine the architecture towards enabling communication among robots and collective adaptations. 
-Thus, all the robots have a instantiation of the reference architecture but are also able to communicate and share information with the rest of the team, enabling the collective adaptation. 
+Thus, all the robots have an instantiation of the reference architecture but are also able to communicate and share information with the rest of the team, enabling the collective adaptation. 
 For further information regarding SERA we made available a deliverable where we presented it in detail in~\url{https://goo.gl/viW76q}.
 
-SERA was already tested during an integration meeting of the project, where the architecture demonstrated that can support the performance of a robot achieving complex missions ---i.e. collaborative transportation, autonomous driving in a dynamic environment.
+SERA was already tested during an integration meeting of the project, where the architecture demonstrated that can support the performance of a robot achieving complex missions ---i.e. collaborative transportation and autonomous driving in a dynamic environment.
 
 %\begin{figure*}[!t]
 %\begin{center}
@@ -34,11 +35,12 @@ SERA was already tested during an integration meeting of the project, where the 
 
 \textbf{Software platform.}
 As explained before, the software platform will integrate the software architecture, all the tools and software created by developers and the configuration facilities.
-The platform is also a collection of the components that compose the architecture, a kind of library.
+The platform is also a collection of %the components that compose the architecture, a kind of library.
+instantiations created by developers of each component of the architecture.
 In our project the components of our architecture are represented as ROS~\cite{Quigley2009} nodes and packages.
-For these reason the platform is based on this middleware.
+For this reason the platform is based on this middleware.
 All these components are developed abstracting the communication problems since we rely on the interfaces defined in the architecture.
-It not only significantly reduces the complexity of the code but also triggers the modularity of our system making possible exchanging the components based on the context.
+It not only significantly reduces the complexity of the code but also triggers the modularity of our system making possible the exchange of components.
 In order to achieve the abstraction of the interfaces we defined an abstract class for each component where all the communication code is stored.
 Then, every time a developer wants to create a new instantiation of a component he/she must create a new class  that inherits the properties of the abstract one.
 
@@ -51,11 +53,11 @@ Then, every time a developer wants to create a new instantiation of a component 
 %It improves the modularity, variability and reusability of our system facilitating the development of the software for animating robotic systems through the creation of reusable robot building blocks with well-defined interfaces and properties.
 
 SERA will consider behavioural concerns to detect whether new components can be effectively plugged into the system. 
-Components should be annotated with behavioural information, that specify when the component can be used (assumptions) and what the component ensures (guarantees). 
+Components should be annotated with behavioural information, that specifies when the component can be used (assumptions) and what the component ensures (guarantees). 
 This kind of annotations can be then used to analyze whether components can be plugged into the system, or whether combining specific components allows ensuring a correct system behaviour. 
 
-Finally, in order to communicate each robot with its teammates we implemented an approach based on ROS+REST.
-So, using a suitable component that works as an interface we are able to send messages in form of services between robots.
+Finally, in order to enable the communication between robots we implemented an approach based on ROS+REST.
+So, using a suitable component that works as an interface we are able to communicate robots using services.
 %In this way, each robot has an instance of ROS running in their own local environment so we can deploy a whole team of robots avoiding a central master node and the problems related with this approach (i.e. bottleneck issues, less robustness facing failures of a node, etc.), specially working with the ROS middleware.
 
 \textbf{Configuration facilities.}
@@ -63,11 +65,11 @@ Since the components of our architecture are exchangeable our next short-term go
 Then, our robotic applications will be able to:
 
 \begin{enumerate}
-\item Being customizable at design-time, so we can configure its components based on the requirements of our context (i.e. hardware installed in each robot, environment where they will be deployed, etc.)
+\item Being customizable at design-time, so we can configure the application components based on the requirements of our context (i.e. hardware installed in each robot, environment where they will be deployed, etc.)
 \item To self-adapt or self-configure at run time, so each robot can apply changes in its configuration based on emergent events of the environment or failures of their system.
 \end{enumerate}
 
-In order to do so we will implement pluginlib~\footnote{http://wiki.ros.org/pluginlib}, a package that uses the ROS build infrastructure and provides tools for writing and dynamically load plugins.
+In order to do so we will implement pluginlib\footnote{http://wiki.ros.org/pluginlib}, a package that uses the ROS build infrastructure and provides tools for writing and dynamically load plugins.
 
 
 
