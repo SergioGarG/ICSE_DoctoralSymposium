@@ -1,27 +1,28 @@
 After the research of the current state of the art we proceeded with RQ2, that will be addressed during the first part of the PhD as well.
-In order to answer it while explaining our proposed process we divided the development of the software to be deployed within each robot in different items.
+In order to answer it %while explaining our proposed process 
+we divided the development of the software to be deployed within each robot in different items.
 
 \textbf{Software architecture.}
 We developed the Co4Robots software architecture, Self-adaptive dEcentralised Robotic Architecture (SERA).
-In order to create and validate SERA we followed the following steps: %steps detailed in Section~\ref{sec:validation}.
+In order to create and validate SERA we went through the following steps: %steps detailed in Section~\ref{sec:validation}.
 we held eight internal meetings, tested the work in three simulated scenarios, sent six emails with questions to each partner, held three consortium meetings, wrote one deliverable and held one integration meeting where SERA was tested.
 
 Our architecture supports a real-time decentralized robot coordination to accomplish missions with teams of robots. 
-Furthermore, it is self-adaptive, responding to external and internal events by computing new strategies to achieve the desired goals.
+%Furthermore, it is self-adaptive, responding to external and internal events by computing new strategies to achieve the desired goals.
 SERA is inspired by and extends concepts of existing proposals for robot software architectures from the literature. 
-Specifically, we inspected architectures identified by a mapping study of Ahmad et al.~\cite{Ahmad201616}, which investigated software architectures for robotics systems to identify and analyze the relevant literature based on 56 peer-reviewed papers.
-Our architecture is a three layers architecture that is strongly influenced by the well-known work of Kramer and Magee~\cite{kramer}.
+Specifically, we inspected architectures identified by a mapping study of Ahmad et al.~\cite{Ahmad201616}, which investigated software architectures for robotics systems to identify and analyze the relevant literature. % based on 56 peer-reviewed papers.
+Our architecture is a three layers architecture that is strongly influenced by the well-known work of Kramer~\cite{kramer}.
 Furthermore, it is a component-based type of architecture, so functionalities of the system are encapsulated in modules called ``components".
 
-It is important to remark that the aim of our project is to build a system that can be easily used by not technical users, so we had to define a way for them to command the missions to the robotic team.
-For this reason we added a central station that is just used during design-time in order to allocate a graphical interface to be used by a final user.
+%It is important to remark that the aim of our project is to build a system that can be easily used by not technical users, so we had to define a way for them to command the missions to the robotic team.
+%For this reason we added a central station that is just used during design-time in order to allocate a graphical interface to be used by a final user.
 
 We defined SERA by first conceiving an architecture for a single robot. 
 Then, we extended and refined it in order to iteratively extend and refine the architecture towards enabling communication among robots and collective adaptations. 
-Thus, all the robots have a instantiation of the reference architecture but are also able to communicate and share information with the rest of the team, making possible the collective adaptation. 
-For further information regarding SERA we made available a deliverable where we presented it in detail~\footnote{https://goo.gl/zoekR2}.
+Thus, all the robots have a instantiation of the reference architecture but are also able to communicate and share information with the rest of the team, enabling the collective adaptation. 
+For further information regarding SERA we made available a deliverable where we presented it in detail in~\url{https://goo.gl/viW76q}.
 
-SERA was already tested during an integration meeting of the project, where the architecture demonstrated that can support the performance of a robot achieving different complex missions ---i.e. collaborative transportation with an human being, autonomous driving in a dynamic environment.
+SERA was already tested during an integration meeting of the project, where the architecture demonstrated that can support the performance of a robot achieving complex missions ---i.e. collaborative transportation, autonomous driving in a dynamic environment.
 
 %\begin{figure*}[!t]
 %\begin{center}
@@ -34,7 +35,8 @@ SERA was already tested during an integration meeting of the project, where the 
 \textbf{Software platform.}
 As explained before, the software platform will integrate the software architecture, all the tools and software created by developers and the configuration facilities.
 The platform is also a collection of the components that compose the architecture, a kind of library.
-In our project the components of our architecture are represented as ROS~\cite{Quigley2009} nodes and packages, and for these reason the platform is based on this middleware.
+In our project the components of our architecture are represented as ROS~\cite{Quigley2009} nodes and packages.
+For these reason the platform is based on this middleware.
 All these components are developed abstracting the communication problems since we rely on the interfaces defined in the architecture.
 It not only significantly reduces the complexity of the code but also triggers the modularity of our system making possible exchanging the components based on the context.
 In order to achieve the abstraction of the interfaces we defined an abstract class for each component where all the communication code is stored.
@@ -57,7 +59,7 @@ So, using a suitable component that works as an interface we are able to send me
 %In this way, each robot has an instance of ROS running in their own local environment so we can deploy a whole team of robots avoiding a central master node and the problems related with this approach (i.e. bottleneck issues, less robustness facing failures of a node, etc.), specially working with the ROS middleware.
 
 \textbf{Configuration facilities.}
-Since the components of our architecture are exchangeable our next short-term goal is to define configuration facilities that can be applied to our system depicted in the architecture.
+Since the components of our architecture are exchangeable our next short-term goal is to define configuration facilities that can be applied to our system. %depicted in the architecture.
 Then, our robotic applications will be able to:
 
 \begin{enumerate}

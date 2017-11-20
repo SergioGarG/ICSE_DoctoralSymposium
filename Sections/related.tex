@@ -4,17 +4,17 @@ In this section we discuss related work with respect with the three proposed Res
 In the last years some frameworks towards the application of software engineering methods to robotics have been proposed~\cite{Ramaswamy2014}.
 In fact, the necessity of this application was reflected with the formation of the \emph{Journal of Software Engineering and Robotics}~\cite{Brugali2010_journal}.
 There are previous works that provide some of the functionalities that we want to implement in our approach, so they provided inspiration to our research.
-For example, in~\cite{wenger} the authors developed a MDE based tool for defining robotic applications which is used for describing their components, connectors and interfaces.
-Furthermore, from the existing models the user can generate automatically working code, what helps to avoid problems regarding communication definition or the instantiation of the components.
-Nevertheless, it is based on systems composed by just one robot.
-The work of Medvidovic et al.~\cite{medvidovic} proposed an architecture-based approach that supports heterogeneous robotic systems that are able to self-adapt in dynamic environments.
+%For example, in~\cite{wenger} the authors developed a MDE based tool for defining robotic applications which is used for describing their components, connectors and interfaces.
+%Furthermore, from the existing models the user can generate automatically working code, what helps to avoid problems regarding communication definition or the instantiation of the components.
+%Nevertheless, it is based on systems composed by just one robot.
+For example, Medvidovic et al.~\cite{medvidovic} proposed an architecture-based approach that supports heterogeneous robotic systems that are able to self-adapt in dynamic environments.
 However, this approach does not provide a platform that enables modularity, variability and reusability in the system neither work in a decentralized fashion.
 A project which aim was similar to the pursued by this work and specially to the pursued by Co4Robots was the BRICS project~\cite{Bischoff2010}. 
 The researchers that worked during this project helped to the community providing a continuous increase of the knowledge in our field but most of their work is not maintained anymore.
-On the other hand, the HyperFlex toolchain, developed by Gherardi et al.~\cite{gherardi}, presents a way of defining robotic applications by reusing reference architectures instead of just reusing components.
+The HyperFlex toolchain~\cite{gherardi}, presents a way of defining robotic applications by reusing reference architectures instead of just reusing components.
 It is an extension of the research conducted during the BRICS project.
-This paper also provides a graphical editor that support the users during the development process of distributed component-based architectures that increase the modularity, reusability and composability of the resulting systems.
-Yet, they do not cover the multirobot collaboration providing a communication method or defining approaches for supporting the choreography of a team of robots.
+This paper also provides a graphical editor that supports the users during the development process of distributed component-based architectures that increase the modularity, reusability and composability of the resulting systems.
+Yet, they do not cover the multi-robot collaboration providing a communication method or defining approaches for supporting the choreography of a team of robots.
 
 \textbf{Using Software Engineering to improve the process of engineering robotic applications.}
 %Our robotic application will be based on ROS~\cite{Quigley2009} and some functionalities will be build on top of it. 
@@ -28,16 +28,18 @@ Yet, they do not cover the multirobot collaboration providing a communication me
 %ROS2 is supposed to solve these previous problems and to substitute ROS1 in a near future, but since it was just released and there are not yet all the contents that were available for ROS1 we opted for keep using ROS1.
 Several software architectures for robotic systems already exist. 
 Kortenkamp et al.~\cite{Kortenkamp2008} provide an extensive discussion about this topic. 
-The architectural styles followed by most of the authors for developing a software architecture in robotics are the component-based~\cite{Bruyninckx2013,Brugali2012,braberman} and Service Oriented Architectures (SOA)~\cite{Fluckiger2014}.
+The architectural styles followed by most of the authors for developing a software architecture in robotics are the component-based~\cite{Bruyninckx2013,braberman} and Service Oriented Architectures (SOA)~\cite{Fluckiger2014}.
 Microservices~\cite{Newman2015} is a variant of the SOA architectural style. 
 The microservices architecture structures an application as a collection of loosely coupled services, which should be fine-grained and the protocols should be lightweight. 
-It helps to improve modularity, but the multiple and complex relationships between all this services (which could be not homogeneous) increase the complexity of deploying a system with these technologies. 
+It helps to improve modularity, but the multiple and complex relationships between all this services %(which could be not homogeneous)
+increase the complexity of deploying a system. % with these technologies. 
 The Cloud Container Technologies~\cite{Pahl2017} are nowadays experiencing a boom because they are being employed as an extension of the microservices. 
 Those technologies aid the orchestration of applications in distributed topologies and provide enhanced distributed computing capabilities. %and improves the performance of microservices due to the reduction of virtualization requirements. 
-Nevertheless, since we declined the usage of microservices in our system due to the unnecessary increase of complexity that it would lead to, we also declined the implementation of these technologies. 
+Nevertheless, as in the case of microservices we also declined its implementation due to the increase of complexity that they would lead to.
+%since we declined the usage of microservices in our system due to the unnecessary increase of complexity that it would lead to, we also declined the implementation of these technologies. 
 
 In fact, component-based software engineering has been broadly used, as explained in~\cite{Brugali2009}. 
-It allows a separation of concerns splitting the functionality of the whole software system into smaller, interchangeable, and configurable components. 
+It allows a separation of concerns splitting the functionality of the whole software system into interchangeable, and configurable components. 
 Between the previously cited works there are architectures that also allow self-adaptation, which is a pivotal feature within the field of robotics.
 There are also architectures that support decentralized systems following the component-based fashion~\cite{Lesire2016}.
 A recent survey~\cite{Yan2013} shows that, even though several works support hierarchical and distributed architectures, most of these only support the same robot type. 
@@ -47,6 +49,6 @@ In this light, SERA strives to be used in a hierarchical and distributed way at 
 \textbf{Managing heterogeneous robotic applications.}
 A brief study of the current state of the art regarding the choreography of multiple robots has been performed in order to solve RQ1.
 However, we will conduct a deeper study during the second part of this PhD project due to the quick advance of technologies in this field.
-There are works that list systems that are able to perform self-adaptation in a collaborative way~\cite{DeLemos2013}.
+There are works  that are able to perform self-adaptation in a collaborative way~\cite{DeLemos2013}.
 Recent surveys also analyse multirobot coordination and strategies to be applied in order to achieve complex missions~\cite{Yan2013}.
-Also, we studied how to manage emergent properties from the work of De Angelis et al.~\cite{DeAngelis2015,DeAngelis2016}.
+Also, we studied how to manage emergent properties from the work of De Angelis et al.~\cite{DeAngelis2016}.
