@@ -5,19 +5,13 @@ The World Robotic Survey~\cite{wrs:online} estimated 35 million indoor service r
 This increase is accompanied with a huge progress in robot technology. %, especially in image processing, planning, control, and collaboration. 
 Software engineering is key to sustaining this new technology.
 
-A robot typically performs specialized tasks; however, some tasks are highly complex and require a team of robots, whose capabilities (e.g., perception, manipulation, and actuation) are coordinated and supervised. 
+A robot typically performs specialized tasks; however, some tasks are highly complex and require a team of robots, whose capabilities %(e.g., perception, manipulation, and actuation) 
+are coordinated and supervised. 
 Such teams also need to adapt to changes, such as of the environment, of the desired tasks, or of the robot (e.g., hardware failures). 
 These demands drive the complexity of robot control software relying on appropriate software architectures. 
-To tackle this complexity, we need to rethink design processes~\cite{Lee2008} by properly managing system integration and raising the abstraction levels, addressing qualities such as evolvability~\cite{Perez2008}, configurability~\cite{Gamez2013563}, scalability, and dependability.
+To tackle this complexity, we need to rethink design processes~\cite{Lee2008} by properly managing system integration and raising the abstraction levels, addressing qualities such as evolvability, configurability, scalability, and dependability.
 
-%The PhD project presented in this paper 
-Our work is involved in the Co4Robots\footnote{http://www.co4robots.eu/} European project.
-Being part of this project allows us not only to formulate but also to validate our research questions in real-world scenarios.
-%According to~\cite{roadmap}: ``Usually there are no system development processes (highlighted by a lack of overall architectural models and methods). 
-%This results in the need for craftsmanship in building robotic systems instead of following established engineering processes".
-According to the Multi-Annual Roadmap For Robotic in Europe~\cite{roadmap} there are no mature system development processes for robotic applications.
-%In fact, most of the robotic applications developed nowadays have to be started from scratch without following well-engineered methods.% to help in the process.
-In fact, robotic applications nowadays are created from scratch without following systematic-engineering methods.
+According to the Multi-Annual Roadmap For Robotic in Europe~\cite{roadmap} there are no mature system development processes for robotic applications, meaning that robotic applications are nowadays created from scratch without following systematic-engineering methods.
 In this context, the aim of the Co4Robots project is to establish systematic engineering process to facilitate the development of the software for animating robotic systems through the creation of reusable robot building blocks with well-defined interfaces and properties. 
 
 The research conducted during the present project will be split in two parts.
@@ -34,7 +28,7 @@ In this context, choreography means the way of representing and controlling the 
 Our goal is to perform the choreography of a deployed team of potentially heterogeneous robots in dynamic environments with the presence of human beings.
 In order to do so, issues as \emph{Emergent properties} ~\cite{DeAngelis2016} and selecting the most suitable \emph{Collaborative adaptation}~\cite{Yan2013} techniques must be addressed.
 
-\textbf{Research Questions.} 
+\noindent \textbf{Research Questions.} 
 We state the following research questions:
 \begin{itemize}
 \item[RQ1] What are the current software engineering practices for engineering robotic applications and what are their limitations?
@@ -42,7 +36,7 @@ We state the following research questions:
 \item[RQ3] What are the applicable strategies to manage a heterogeneous robotic application with only partial knowledge of a dynamic environment?
 \end{itemize}
 
-\textbf{Contributions.} 
+\noindent \textbf{Contributions.} 
 Our contributions are:
 
 \begin{enumerate}
@@ -50,7 +44,7 @@ Our contributions are:
 %\item Validation of the architecture in a real-world scenario
 \item Implementation of an extensible software platform where all the developed algorithms and tools can be plugged in;
 \item Definition of configuration mechanisms to enable \emph{start-up configuration} and \emph{run-time configuration};
-\item Integration of an approach based on ROS+REST for the communication between robots;
+\item Integration of an approach based on REST over ROS for the communication among robots;
 \item Development of the algorithms in charge of managing the robotic team, based on management of emergent properties and selection of collaborative adaptation techniques.
 %\end{enumerate}
 \end{enumerate}
@@ -59,10 +53,11 @@ At this moment, the software architecture and the communication mechanisms are a
 The software platform is being continuously developed and we intend to start dealing with the configuration facilities in the near future.
 The development of the algorithms in charge of managing the robotic team are planned to be addressed during the second part of the project.
 
-\textbf{Outline.} 
-Section~\ref{sec:approach} describes our research approach and answers the first RQ. %of the current work and answers the first RQ.
-In Section ~\ref{sec:single} we present the process that we follow for engineering robotic applications and answer RQ2.
-Then, in Section~\ref{sec:multi} we explain our plan for managing a robotic team while answering RQ3.
-In Section~\ref{sec:related}, we introduce different works with a similar scope and position our research.
-Section~\ref{sec:validation} explains our validation plan.
-Section~\ref{sec:conclusion} concludes with final remarks.
+\noindent \textbf{Validation.} 
+Our work is involved in the Co4Robots\footnote{\url{http://www.co4robots.eu/}} European project.
+Being part of this project allows us not only to formulate but also to validate our research questions in real-world scenarios.
+In order to validate the code and artifacts developed we defined three different approaches than can be followed depending on the artifact that we want to obtain.
+The first approach consists in getting feedback from stakeholders and practitioners; this has been done, for instance, through presentations of our work during meetings and consortiums.
+The second approach relies on simulation tools that allow us to validate our artifacts before implementing them in real robots.
+The third approach consists in validation with real robots in real-world scenarios.
+A video of an experiment consisting in a real robot being conducted by a human in a real-world scenario is provided in\footnote{\url{dropboxfolder}}.
